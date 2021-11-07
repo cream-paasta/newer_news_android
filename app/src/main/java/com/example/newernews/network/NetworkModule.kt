@@ -19,9 +19,9 @@ object NetworkModule {
             .build()
     }
 
-    */
-/*@Singleton
+    @Singleton
     @Provides
-    fun get*//*
+    fun get
 
-}*/
+}
+*/
