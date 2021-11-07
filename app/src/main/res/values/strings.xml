@@ -10,4 +10,9 @@
 
     <string name="start">Start</string>
 
+    <string name="login">Sing in</string>
+    <string name="login_id">ID</string>
+    <string name="login_pw">PW</string>
+    <string name="sing_up">Sing up</string>
+
 </resources>

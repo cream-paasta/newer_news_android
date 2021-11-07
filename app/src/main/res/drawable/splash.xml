@@ -3,7 +3,7 @@
     <item android:drawable="@drawable/bg_main" />
     <item>
         <bitmap
-            android:src="@drawable/splash_title"
+            android:src="@drawable/newer_news_logo_white"
             android:gravity="center" />
     </item>
 </layer-list>

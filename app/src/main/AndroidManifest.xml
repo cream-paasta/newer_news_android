@@ -38,6 +38,10 @@
 
         <activity android:name="com.example.newernews.presentation.ui.onboarding.OnboardingActivity"/>
 
+        <activity android:name="com.example.newernews.presentation.ui.login.LoginActivity"/>
+
+        <activity android:name="com.example.newernews.presentation.ui.singup.SingUpActivity"/>
+
     </application>
 
 </manifest>
