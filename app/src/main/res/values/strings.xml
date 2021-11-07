@@ -3,4 +3,11 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    
+    <string name="title_onboarding">Welcome to Newer News</string>
+    <string name="contents_first_onboarding">Check out what\'s going on </string>
+    <string name="contents_second_onboarding">in our region through Newer News.</string>
+
+    <string name="start">Start</string>
+
 </resources>

@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+
     <application
         android:name="com.example.NewerNewsApplication"
         android:allowBackup="true"
@@ -25,7 +26,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.permission.PermissionActivity"
+        <activity android:name="com.example.newernews.presentation.ui.permission.PermissionActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +35,9 @@
             </intent-filter>
 
         </activity>
+
+        <activity android:name="com.example.newernews.presentation.ui.onboarding.OnboardingActivity"/>
+
     </application>
 
 </manifest>
