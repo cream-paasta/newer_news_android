@@ -1,4 +1,4 @@
-package com.example.newernews.presentation.ui.notifications
+package com.example.newernews.presentation.ui.mainfragment.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

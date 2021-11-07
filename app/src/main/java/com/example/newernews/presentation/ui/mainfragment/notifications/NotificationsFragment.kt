@@ -1,4 +1,4 @@
-package com.example.newernews.presentation.ui.home
+package com.example.newernews.presentation.ui.mainfragment.notifications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,18 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.newernews.R
-import com.example.newernews.databinding.FragmentHomeBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.newernews.databinding.FragmentNotificationsBinding
 
-@AndroidEntryPoint
-class HomeFragment : Fragment() {
+class NotificationsFragment : Fragment() {
 
-    private val homeViewModel: HomeViewModel by viewModels()
-    private var _binding: FragmentHomeBinding? = null
+    private lateinit var notificationsViewModel: NotificationsViewModel
+    private var _binding: FragmentNotificationsBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -28,11 +24,14 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        notificationsViewModel =
+            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+
+        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textNotifications
+        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
