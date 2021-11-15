@@ -14,7 +14,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.NewerNews">
+        android:theme="@style/Theme.NewerNews"
+        android:largeHeap="true"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -40,7 +42,7 @@
 
         <activity android:name="com.example.newernews.presentation.ui.login.LoginActivity"/>
 
-        <activity android:name="com.example.newernews.presentation.ui.singup.SingUpActivity"/>
+        <activity android:name="com.example.newernews.presentation.ui.signup.SignUpActivity"/>
 
     </application>
 

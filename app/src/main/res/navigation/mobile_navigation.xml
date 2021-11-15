@@ -12,14 +12,26 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_news_feed"
         android:name="com.example.newernews.presentation.ui.mainfragment.newsfeed.NewsFeedFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_news_feed"
         tools:layout="@layout/fragment_news_feed" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.newernews.presentation.ui.mainfragment.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_hot_search"
+        android:name="com.example.newernews.presentation.ui.mainfragment.hotsearch.HotSearchFragment"
+        android:label="@string/title_hot_search"
+        tools:layout="@layout/fragment_hot_search" />
+
+    <fragment
+        android:id="@+id/navigation_board"
+        android:name="com.example.newernews.presentation.ui.mainfragment.board.BoardFragment"
+        android:label="@string/title_board"
+        tools:layout="@layout/fragment_board"/>
+
+    <fragment
+        android:id="@+id/navigation_my_page"
+        android:name="com.example.newernews.presentation.ui.mainfragment.mypage.MyPageFragment"
+        android:label="@string/title_board"
+        tools:layout="@layout/fragment_my_page"/>
 </navigation>

@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Newer News</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_news_feed">News Feed</string>
+    <string name="title_hot_search">Hot Search</string>
+    <string name="title_board">Board</string>
+    <string name="title_my_page">My Page</string>
     
     <string name="title_onboarding">Welcome to Newer News</string>
     <string name="contents_first_onboarding">우리 지역에서 무슨 일이 일어나고 있는지 </string>
@@ -13,6 +15,13 @@
     <string name="login">로그인</string>
     <string name="login_id">아이디</string>
     <string name="login_pw">패스워드</string>
-    <string name="sing_up">회원가입</string>
+    <string name="login_fail">로그인에 실패하였습니다.</string>
+
+    <string name="sign_up">회원가입</string>
+    <string name="email">이메일</string>
+    <string name="password">패스워드</string>
+    <string name="nickname">닉네임</string>
+    <string name="sign_up_success">회원가입 되었습니다!</string>
+    <string name="sign_up_fali">회원가입에 실패하였습니다.</string>
 
 </resources>

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="205dp"
+    android:layout_width="match_parent"
     android:layout_height="210dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="195dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         app:cardCornerRadius="8dp"
+        android:layout_margin="15dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -22,8 +23,9 @@
             <ImageView
                 android:id="@+id/iv_news_photo"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
+                android:layout_height="130dp"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tv_news_title"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:src="@drawable/news_photo"/>
@@ -33,42 +35,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/iv_news_photo"
+                app:layout_constraintBottom_toTopOf="@id/tv_news_company"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:textSize="16sp"
-                android:text="[단독] 경찰 직원들, 물 마시려 사비 갹출…매달 2천4백만 원"/>
+                android:text="[단독] 경찰 직원들, 물 마시려 사비 각출…매달 2천4백만 원"/>
 
             <TextView
                 android:id="@+id/tv_news_company"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_news_title"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/tv_news_reporter"
+                app:layout_constraintRight_toLeftOf="@id/tv_news_time"
                 android:layout_marginStart="10dp"
-                android:layout_marginBottom="5dp"
                 android:text="KBS"/>
-
-            <TextView
-                android:id="@+id/tv_news_reporter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@id/tv_news_company"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="5dp"
-                android:text="홍성희"/>
 
             <TextView
                 android:id="@+id/tv_news_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toTopOf="@id/tv_news_company"
+                app:layout_constraintLeft_toRightOf="@id/tv_news_company"
+                android:layout_marginStart="10dp"
                 android:text="12분 전"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

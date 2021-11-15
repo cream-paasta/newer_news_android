@@ -2,10 +2,8 @@ package com.example.newernews.presentation.ui.mainfragment.newsfeed.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.newernews.R
 import com.example.newernews.databinding.ItemNewsFeedBinding
 
 class NewsFeedAdapter(
@@ -16,7 +14,7 @@ class NewsFeedAdapter(
         private val binding: ItemNewsFeedBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
-            // TODO 실제 데이터 들어오면 String에서 Item으로 변경해야함함
+            // TODO 실제 데이터 들어오면 String에서 Item으로 변경해야함
        }
     }
 

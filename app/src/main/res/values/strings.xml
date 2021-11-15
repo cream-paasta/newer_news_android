@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Newer News</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_news_feed">Dashboard</string>
+    <string name="title_hot_search">Notifications</string>
+    <string name="title_board">Board</string>
+    <string name="title_my_page">My Page</string>
     
     <string name="title_onboarding">Welcome to Newer News</string>
     <string name="contents_first_onboarding">Check out what\'s going on </string>
@@ -10,9 +12,16 @@
 
     <string name="start">Start</string>
 
-    <string name="login">Sing in</string>
+    <string name="login">Sign in</string>
     <string name="login_id">ID</string>
     <string name="login_pw">PW</string>
-    <string name="sing_up">Sing up</string>
+    <string name="login_fail">Fail login.</string>
+
+    <string name="sign_up">Sign up</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="nickname">Nick name</string>
+    <string name="sign_up_success">Success!</string>
+    <string name="sign_up_fali">Fail</string>
 
 </resources>

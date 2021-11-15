@@ -22,13 +22,13 @@ class NewsFeedFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val adapter by lazy { NewsFeedAdapter() }
-    private val layoutManager = GridLayoutManager(this.context, 2)
+    private val layoutManager = LinearLayoutManager(this.context)
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
         val root: View = binding.root
