@@ -1,14 +1,15 @@
 <resources>
     <string name="app_name">Newer News</string>
     <string name="title_home">Home</string>
-    <string name="title_news_feed">Dashboard</string>
-    <string name="title_hot_search">Notifications</string>
-    <string name="title_board">Board</string>
+    <string name="title_news_feed">News Feed</string>
+    <string name="title_hot_search">Hot Search</string>
+    <string name="title_board">Chat</string>
     <string name="title_my_page">My Page</string>
     
     <string name="title_onboarding">Welcome to Newer News</string>
-    <string name="contents_first_onboarding">Check out what\'s going on </string>
-    <string name="contents_second_onboarding">in our region through Newer News.</string>
+    <string name="contents_onboarding">Our neighborhood news in my hand</string>
+
+    <string name="request_permission_location">Please allow the location permission.</string>
 
     <string name="start">Start</string>
 
@@ -23,5 +24,11 @@
     <string name="nickname">Nick name</string>
     <string name="sign_up_success">Success!</string>
     <string name="sign_up_fali">Fail</string>
+
+    <string name="home_info_hello">Hello. %s,</string>
+    <string name="home_info_location">The current location is %s %s %s.</string>
+    <string name="home_info_weather">The current temperature in %s is %d℃.</string>
+
+    <string name="home_news">%s news</string>
 
 </resources>

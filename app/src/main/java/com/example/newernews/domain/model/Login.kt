@@ -2,7 +2,12 @@ package com.example.newernews.domain.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Login(
+data class Login (
+    @SerializedName("user")
+    var user: LoginUser
+)
+
+data class LoginUser(
     @SerializedName("email")
     var email: String,
 

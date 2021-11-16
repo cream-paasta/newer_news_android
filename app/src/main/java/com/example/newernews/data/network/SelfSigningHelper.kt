@@ -6,16 +6,13 @@ import java.security.KeyManagementException
 import java.security.NoSuchAlgorithmException
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
-import javax.net.ssl.HostnameVerifier
-import javax.net.ssl.SSLContext
-import javax.net.ssl.TrustManager
-import javax.net.ssl.X509TrustManager
+import javax.net.ssl.*
 
 class SelfSigningHelper {
 
     companion object {
 
-        @JvmStatic fun getCSCAPICertificate(): OkHttpClient.Builder {
+        @JvmStatic fun getNNAPICertificate(): OkHttpClient.Builder {
             val sc: SSLContext
             val trustAllCerts: Array<TrustManager> = arrayOf<TrustManager>(object :
                 X509TrustManager {
@@ -37,16 +34,16 @@ class SelfSigningHelper {
                 sc = SSLContext.getInstance("SSL")
                 sc.init(null, trustAllCerts, SecureRandom())
                 builder.sslSocketFactory(sc.socketFactory, trustAllCerts[0] as X509TrustManager)
-                builder.hostnameVerifier(HostnameVerifier { hostname, session -> true })
+                builder.hostnameVerifier(HostnameVerifier { _, session ->
+                    HttpsURLConnection.getDefaultHostnameVerifier().run {
+                        verify("https://newer_news_server.paas-ta.org", session)
+                    }
+                })
             } catch (e: NoSuchAlgorithmException) {
                 e.printStackTrace()
             } catch (e: KeyManagementException) {
                 e.printStackTrace()
             }
-            /*HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory())
-
-            val allHostsValid = HostnameVerifier { hostname, session -> true }
-            HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid)*/
 
             val httpLoggingInterceptor = HttpLoggingInterceptor()
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

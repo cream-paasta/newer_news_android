@@ -18,4 +18,16 @@ class SharedPrefModule @Inject constructor(
     var login: Boolean
         get() = sharedPref.getBoolean("login", false)
         set(value) = sharedPref.edit().putBoolean("login", value).apply()
+
+    var email: String?
+        get() = sharedPref.getString("email", "")
+        set(value) = sharedPref.edit().putString("email", value).apply()
+
+    var token: String?
+        get() = sharedPref.getString("token", "")
+        set(value) = sharedPref.edit().putString("token", value).apply()
+
+    var userName: String?
+        get() = sharedPref.getString("userName", "")
+        set(value) = sharedPref.edit().putString("userName", value).apply()
 }
