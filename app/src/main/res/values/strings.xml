@@ -26,7 +26,7 @@
     <string name="sign_up_fali">Fail</string>
 
     <string name="home_info_hello">Hello. %s,</string>
-    <string name="home_info_location">The current location is %s %s %s.</string>
+    <string name="home_info_location">The current location is\n%s %s %s.</string>
     <string name="home_info_weather">The current temperature in %s is %d℃.</string>
 
     <string name="home_news">%s news</string>

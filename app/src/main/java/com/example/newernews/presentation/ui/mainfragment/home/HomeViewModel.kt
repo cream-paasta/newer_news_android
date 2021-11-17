@@ -1,9 +1,14 @@
 package com.example.newernews.presentation.ui.mainfragment.home
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.newernews.domain.model.KoreanAddress
-import com.example.newernews.domain.usecase.GetAddressUseCase
+import com.example.newernews.domain.model.NewsList
+import com.example.newernews.domain.model.RequestNewsListModel
+import com.example.newernews.domain.usecase.*
+import com.example.newernews.presentation.delegate.NewsOpenDelegate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.Disposable
@@ -11,27 +16,67 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val getAddressUseCase: GetAddressUseCase
+    private val getAddressUseCase: GetAddressUseCase,
+    private val getUserNameUseCase: GetUserNameUseCase,
+    private val getTokenUseCase: GetTokenUseCase,
+    private val getNewsListUseCase: GetNewsListUseCase,
+    val delegate: NewsOpenDelegate
 ) : ViewModel() {
+    private val _currentAddressLiveData = MutableLiveData<KoreanAddress>()
+    val currentAddressLiveData: LiveData<KoreanAddress> get() = _currentAddressLiveData
 
-    fun getKoreanAddress(): KoreanAddress {
-        var koreanAddress = KoreanAddress("", "", "")
+    private val _userNameLiveData = MutableLiveData<String>()
+    val userNameLiveData: LiveData<String> get() = _userNameLiveData
+
+    private val _smallNewsListLiveData = MutableLiveData<NewsList>()
+    val smallNewsListLivedata: LiveData<NewsList> get() = _smallNewsListLiveData
+
+    private val _bigNewsListLiveData = MutableLiveData<NewsList>()
+    val bigNewsListLiveData: LiveData<NewsList> get() = _bigNewsListLiveData
+
+    fun requestCurrentAddress() {
         getAddressUseCase.execute(Any())
             .subscribe(object: SingleObserver<KoreanAddress> {
                 override fun onSubscribe(d: Disposable?) {
                 }
 
-                override fun onSuccess(t: KoreanAddress?) {
-                    if (t != null) {
-                        Log.d("TESTLOG", "city: ${t.city} / gu: ${t.gu} / dong: ${t.dong}")
-                        koreanAddress = t
-                    }
+                override fun onSuccess(t: KoreanAddress) {
+                    Log.d("TESTLOG", "city: ${t.city} / gu: ${t.gu} / dong: ${t.dong}")
+                    _currentAddressLiveData.value = t
                 }
 
                 override fun onError(e: Throwable?) {
-                    Log.e("TESTLOG", "[getKoreanAddress] onError: $e")
+                    Log.e("TESTLOG", "[requestCurrentAddress] onError: $e")
                 }
             })
-        return koreanAddress
+    }
+
+    fun requestUserName() {
+        val userName = getUserNameUseCase.getUserName()
+        if (userName != null) {
+            _userNameLiveData.value = userName!!
+        } else {
+            _userNameLiveData.value = ""
+        }
+    }
+
+    fun requestNewsList(query: String, location: Int) { // 0: Small Location, 1: Big Location
+        val token = getTokenUseCase.getToken()
+        if (token != null) {
+            getNewsListUseCase.execute(RequestNewsListModel(token, query))
+                .subscribe(object: SingleObserver<NewsList> {
+                    override fun onSubscribe(d: Disposable?) {
+                    }
+
+                    override fun onSuccess(t: NewsList?) {
+                        if (location == 0)_smallNewsListLiveData.value = t!!
+                        else if (location == 1) _bigNewsListLiveData.value = t!!
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        Log.e("TESTLOG", "[requestNewsList] onError: $e")
+                    }
+                })
+        }
     }
 }

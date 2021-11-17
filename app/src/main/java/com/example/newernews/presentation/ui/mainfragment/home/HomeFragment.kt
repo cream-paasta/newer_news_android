@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newernews.R
 import com.example.newernews.databinding.FragmentHomeBinding
+import com.example.newernews.domain.model.KoreanAddress
 import com.example.newernews.presentation.ui.mainfragment.home.adapter.HomeNewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,19 +21,33 @@ class HomeFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private val smallLocationAdapter by lazy { HomeNewsAdapter(0) }
-    private val bigLocationAdapter by lazy { HomeNewsAdapter(1) }
+    private val smallLocationAdapter by lazy { HomeNewsAdapter(homeViewModel.delegate, 0) }
+    private val bigLocationAdapter by lazy { HomeNewsAdapter(homeViewModel.delegate, 1) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var currentAddress = KoreanAddress("", "", "")
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val currentAddress = homeViewModel.getKoreanAddress()
+        homeViewModel.requestUserName()
+        homeViewModel.userNameLiveData.observe(viewLifecycleOwner, {
+            binding.tvHello.text = String.format(getString(R.string.home_info_hello), it)
+        })
 
-        binding.tvHello.text = String.format(getString(R.string.home_info_hello), "test")
+        homeViewModel.requestCurrentAddress()
+        homeViewModel.currentAddressLiveData.observe(viewLifecycleOwner, {
+            currentAddress = it
+            binding.tvLocation.text = String.format(getString(R.string.home_info_location), it.city, it.gu, it.dong)
+            binding.tvSmallLocationNewsTitle.text = String.format(getString(R.string.home_news), it.gu)
+            binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.home_news), it.city)
+
+            homeViewModel.requestNewsList(it.gu, 0)
+            homeViewModel.requestNewsList(it.city, 1)
+        })
 
         binding.rvSmallLocationNews.also {
             it.layoutManager = LinearLayoutManager(this.context)
@@ -44,9 +59,17 @@ class HomeFragment : Fragment() {
             it.adapter = bigLocationAdapter
         }
 
-        val mutableList = arrayListOf<String>("1", "2", "3", "4", "5")
-        smallLocationAdapter.submitList(mutableList)
-        bigLocationAdapter.submitList(mutableList)
+        homeViewModel.smallNewsListLivedata.observe(viewLifecycleOwner, {
+            it.let {
+                smallLocationAdapter.submitList(it.news.toMutableList())
+            }
+        })
+
+        homeViewModel.bigNewsListLiveData.observe(viewLifecycleOwner, {
+            it.let {
+                bigLocationAdapter.submitList(it.news.toMutableList())
+            }
+        })
 
         return binding.root
     }

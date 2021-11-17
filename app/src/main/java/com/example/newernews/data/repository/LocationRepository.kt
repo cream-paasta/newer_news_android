@@ -3,7 +3,6 @@ package com.example.newernews.data.repository
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.location.Address
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -29,9 +28,14 @@ class LocationRepository @Inject constructor(
                 emitter.onError(Throwable("doesn't have location permission"))
             } else {
                 locationModule.locationClient().lastLocation.addOnSuccessListener {
-                    val addressList = locationModule.geocoder().getFromLocation(it.latitude, it.longitude, 1)[0]
-                        .getAddressLine(0).split(" ")
-                    emitter.onSuccess(KoreanAddress(addressList[1], addressList[2], addressList[3]))
+                    val addressList = locationModule.geocoder().getFromLocation(it.latitude, it.longitude, 2)
+                    Log.d("TESTLOG", "[getLocationAddress] $addressList")
+                    val addressLineList = if (addressList[0].thoroughfare != null) {
+                        addressList[0].getAddressLine(0).split(" ")
+                    } else {
+                        addressList[1].getAddressLine(0).split(" ")
+                    }
+                    emitter.onSuccess(KoreanAddress(addressLineList[1], addressLineList[2], addressLineList[3]))
                 }
             }
         }
