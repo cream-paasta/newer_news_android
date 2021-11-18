@@ -10,6 +10,8 @@ class BaseUrl {
         const val NN_API_GET_NEWS = "issues"
         const val NN_API_PUT_LIKE = "action"
 
+        const val NN_API_GET_HOT_LOCATIONS = "gus"
+
         const val NN_API_CHAT = "posts"
     }
 }

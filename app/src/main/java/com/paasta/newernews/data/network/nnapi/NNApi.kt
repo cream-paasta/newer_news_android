@@ -23,7 +23,8 @@ interface NNApi {
     @GET(BaseUrl.NN_API_GET_NEWS)
     fun getNewsList(
         @Header("Authorization") auth: String,
-        @Query("query") query: String
+        @Query("query") query: String,
+        @Query("hot") isHot: Boolean
     ): Single<NewsList>
 
     @Headers("Accept: application/json", "Content-Type: application/json")
@@ -41,6 +42,12 @@ interface NNApi {
         @Query("flag") flag: Boolean,
         @Query("kind") kind: String
     ): Single<Any>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @GET(BaseUrl.NN_API_GET_HOT_LOCATIONS)
+    fun getHotLocations(
+        @Header("Authorization") auth: String,
+    ): Single<HotLocations>
 
     @Headers("Accept: application/json", "Content-Type: application/json")
     @GET(BaseUrl.NN_API_CHAT)

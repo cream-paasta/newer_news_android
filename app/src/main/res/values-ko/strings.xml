@@ -37,4 +37,7 @@
 
     <string name="send_chat">전송</string>
 
+    <string name="hot_location">실시간 급상승 지역</string>
+    <string name="hot_news">실시간 뉴스</string>
+
 </resources>

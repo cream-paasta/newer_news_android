@@ -12,4 +12,5 @@
     <color name="sub_color">#CFE5FF</color>
     <color name="default_text_color">#0A1C28</color>
     <color name="default_background_color">#FAFAFA</color>
+    <color name="divider_color">#7D7D7D86</color>
 </resources>
