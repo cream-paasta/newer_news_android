@@ -40,4 +40,7 @@
     <string name="hot_location">Hot Location</string>
     <string name="hot_news">Hot News</string>
 
+    <string name="my_page">My Page</string>
+    <string name="my_page_hello">Hello, %s.</string>
+
 </resources>

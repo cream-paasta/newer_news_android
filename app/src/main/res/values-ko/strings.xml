@@ -7,7 +7,7 @@
     <string name="title_my_page">My Page</string>
     
     <string name="title_onboarding">Welcome to Newer News</string>
-    <string name="contents_onboarding">우리 동네 뉴스가 내 손 안에</string>
+    <string name="contents_onboarding">지역밀착형 뉴스플랫폼</string>
 
     <string name="request_permission_location">위치 권한을 허용해주세요.</string>
 
@@ -39,5 +39,8 @@
 
     <string name="hot_location">실시간 급상승 지역</string>
     <string name="hot_news">실시간 뉴스</string>
+
+    <string name="my_page">내 페이지</string>
+    <string name="my_page_hello">%s님, 안녕하세요.</string>
 
 </resources>
