@@ -25,4 +25,19 @@ class SharedPrefRepository @Inject constructor(
     fun setUserName(value: String) {
         sharedPrefModule.userName = value
     }
+
+    fun getSavedCity(): String? = sharedPrefModule.savedCity
+    fun setSavedCity(value: String) {
+        sharedPrefModule.savedCity = value
+    }
+
+    fun getSavedGu(): String? = sharedPrefModule.savedGu
+    fun setSavedGu(value: String) {
+        sharedPrefModule.savedGu = value
+    }
+
+    fun getSavedDong(): String? = sharedPrefModule.savedDong
+    fun setSavedDong(value: String) {
+        sharedPrefModule.savedDong = value
+    }
 }

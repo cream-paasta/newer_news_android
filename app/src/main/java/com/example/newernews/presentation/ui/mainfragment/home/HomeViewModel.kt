@@ -8,6 +8,7 @@ import com.example.newernews.domain.model.KoreanAddress
 import com.example.newernews.domain.model.NewsList
 import com.example.newernews.domain.model.RequestNewsListModel
 import com.example.newernews.domain.usecase.*
+import com.example.newernews.domain.usecase.local.*
 import com.example.newernews.presentation.delegate.NewsOpenDelegate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.SingleObserver
@@ -20,6 +21,9 @@ class HomeViewModel @Inject constructor(
     private val getUserNameUseCase: GetUserNameUseCase,
     private val getTokenUseCase: GetTokenUseCase,
     private val getNewsListUseCase: GetNewsListUseCase,
+    private val setSavedCityUseCase: SetSavedCityUseCase,
+    private val setSavedGuUseCase: SetSavedGuUseCase,
+    private val setSavedDongUseCase: SetSavedDongUseCase,
     val delegate: NewsOpenDelegate
 ) : ViewModel() {
     private val _currentAddressLiveData = MutableLiveData<KoreanAddress>()
@@ -42,10 +46,12 @@ class HomeViewModel @Inject constructor(
 
                 override fun onSuccess(t: KoreanAddress) {
                     Log.d("TESTLOG", "city: ${t.city} / gu: ${t.gu} / dong: ${t.dong}")
+                    saveAddress(t)
                     _currentAddressLiveData.value = t
                 }
 
-                override fun onError(e: Throwable?) {
+
+                override fun onError(e: Throwable?) {2
                     Log.e("TESTLOG", "[requestCurrentAddress] onError: $e")
                 }
             })
@@ -78,5 +84,11 @@ class HomeViewModel @Inject constructor(
                     }
                 })
         }
+    }
+
+    fun saveAddress(address: KoreanAddress) {
+        setSavedCityUseCase.setSavedCity(address.city)
+        setSavedGuUseCase.setSavedGu(address.gu)
+        setSavedDongUseCase.setSavedDong(address.dong)
     }
 }

@@ -29,4 +29,20 @@ interface NNApi {
         @Header("Authorization") auth: String,
         @Query("query") query: String
     ): Single<NewsList>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @GET(BaseUrl.NN_API_GET_NEWS + "/{id}")
+        fun getIncrementViewCount(
+        @Header("Authorization") auth: String,
+        @Path("id") id: String
+    ): Single<Any>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
+    @PUT(BaseUrl.NN_API_GET_NEWS + "/{id}/" + BaseUrl.NN_API_PUT_LIKE)
+    fun putLikeNews(
+        @Header("Authorization") auth: String,
+        @Path("id") id: String,
+        @Query("flag") flag: Boolean,
+        @Query("kind") kind: String
+    ): Single<Any>
 }

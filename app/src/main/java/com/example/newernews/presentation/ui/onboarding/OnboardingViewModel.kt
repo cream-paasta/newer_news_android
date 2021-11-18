@@ -1,7 +1,7 @@
 package com.example.newernews.presentation.ui.onboarding
 
 import androidx.lifecycle.ViewModel
-import com.example.newernews.domain.usecase.GetLoginUseCase
+import com.example.newernews.domain.usecase.local.GetLoginUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

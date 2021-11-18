@@ -25,9 +25,9 @@
 
     <fragment
         android:id="@+id/navigation_board"
-        android:name="com.example.newernews.presentation.ui.mainfragment.board.BoardFragment"
+        android:name="com.example.newernews.presentation.ui.mainfragment.chat.ChatFragment"
         android:label="@string/title_board"
-        tools:layout="@layout/fragment_board"/>
+        tools:layout="@layout/fragment_chat"/>
 
     <fragment
         android:id="@+id/navigation_my_page"

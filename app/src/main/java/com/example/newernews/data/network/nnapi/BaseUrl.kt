@@ -8,5 +8,6 @@ class BaseUrl {
         const val NN_API_POST_LOGIN = "login"
 
         const val NN_API_GET_NEWS = "issues"
+        const val NN_API_PUT_LIKE = "action"
     }
 }

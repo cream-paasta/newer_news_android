@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="@{(view) -> onItemClickListener.onItemClick(news)}">
+        android:onClick="@{(view) -> onItemClickListener.onItemClick(view, news)}">
 
         <ImageView
             android:id="@+id/iv_layout"
@@ -65,7 +65,6 @@
             android:layout_marginEnd="8dp"
             android:text="1시간 전"
             android:visibility="gone"/>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

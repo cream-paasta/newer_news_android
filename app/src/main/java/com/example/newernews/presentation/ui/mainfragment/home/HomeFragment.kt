@@ -1,5 +1,6 @@
 package com.example.newernews.presentation.ui.mainfragment.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newernews.R
 import com.example.newernews.databinding.FragmentHomeBinding
 import com.example.newernews.domain.model.KoreanAddress
+import com.example.newernews.presentation.ui.WebViewActivity
 import com.example.newernews.presentation.ui.mainfragment.home.adapter.HomeNewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,8 +31,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var currentAddress = KoreanAddress("", "", "")
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         homeViewModel.requestUserName()
@@ -40,10 +40,9 @@ class HomeFragment : Fragment() {
 
         homeViewModel.requestCurrentAddress()
         homeViewModel.currentAddressLiveData.observe(viewLifecycleOwner, {
-            currentAddress = it
             binding.tvLocation.text = String.format(getString(R.string.home_info_location), it.city, it.gu, it.dong)
-            binding.tvSmallLocationNewsTitle.text = String.format(getString(R.string.home_news), it.gu)
-            binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.home_news), it.city)
+            binding.tvSmallLocationNewsTitle.text = String.format(getString(R.string.news_dynamic), it.gu)
+            binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.news_dynamic), it.city)
 
             homeViewModel.requestNewsList(it.gu, 0)
             homeViewModel.requestNewsList(it.city, 1)
@@ -62,13 +61,21 @@ class HomeFragment : Fragment() {
         homeViewModel.smallNewsListLivedata.observe(viewLifecycleOwner, {
             it.let {
                 smallLocationAdapter.submitList(it.news.toMutableList())
+                binding.progressBarSmallNews.visibility = View.GONE
             }
         })
 
         homeViewModel.bigNewsListLiveData.observe(viewLifecycleOwner, {
             it.let {
                 bigLocationAdapter.submitList(it.news.toMutableList())
+                binding.progressBarBigNews.visibility = View.GONE
             }
+        })
+
+        homeViewModel.delegate.urlLiveDelegate.observe(viewLifecycleOwner, {
+            val intent = Intent(activity, WebViewActivity::class.java)
+            intent.putExtra("url", it)
+            startActivity(intent)
         })
 
         return binding.root

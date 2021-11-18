@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.newernews.R
 import com.example.newernews.databinding.FragmentNewsFeedBinding
-import com.example.newernews.presentation.ui.mainfragment.newsfeed.adapter.NewsFeedAdapter
+import com.example.newernews.domain.model.KoreanAddress
+import com.example.newernews.presentation.ui.mainfragment.newsfeed.adapter.NewsFeedFragmentAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,27 +21,32 @@ class NewsFeedFragment : Fragment() {
     private var _binding: FragmentNewsFeedBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter by lazy { NewsFeedAdapter() }
-    private val layoutManager = LinearLayoutManager(this.context)
+    private lateinit var newsFeedFragmentAdapter: NewsFeedFragmentAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentNewsFeedBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        binding.rvNewsList.also {
-            it.layoutManager = layoutManager
-            it.adapter = adapter
-        }
+        newsFeedViewModel.getSavedAddress()
+        newsFeedViewModel.savedAddressLiveData.observe(viewLifecycleOwner, {
+            TabLayoutMediator(binding.newsFeedTabLayout, binding.newsFeedViewPager) { tab, position ->
+                when(position) {
+                    0 -> tab.text = String.format(getString(R.string.news_dynamic), it.dong)
+                    1 -> tab.text = String.format(getString(R.string.news_dynamic), it.gu)
+                    2 -> tab.text = String.format(getString(R.string.news_dynamic), it.city)
+                }
+            }.attach()
+        })
 
-        val mutableList = arrayListOf<String>("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14")
-        adapter.submitList(mutableList)
+        return binding.root
+    }
 
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        newsFeedFragmentAdapter = NewsFeedFragmentAdapter(this)
+        binding.newsFeedViewPager.adapter = newsFeedFragmentAdapter
     }
 
     override fun onDestroyView() {

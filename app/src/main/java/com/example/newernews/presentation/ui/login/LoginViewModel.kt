@@ -8,6 +8,10 @@ import com.example.newernews.domain.model.Login
 import com.example.newernews.domain.model.LoginResponse
 import com.example.newernews.domain.model.LoginUser
 import com.example.newernews.domain.usecase.*
+import com.example.newernews.domain.usecase.local.SetEmailUseCase
+import com.example.newernews.domain.usecase.local.SetLoginUseCase
+import com.example.newernews.domain.usecase.local.SetTokenUseCase
+import com.example.newernews.domain.usecase.local.SetUserNameUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.SingleObserver
 import io.reactivex.rxjava3.disposables.Disposable

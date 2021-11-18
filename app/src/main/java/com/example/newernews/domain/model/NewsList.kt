@@ -24,11 +24,15 @@ data class News(
     var viewCount: Int,
 
     @SerializedName("pubed_at")
-    var uploadedDate: String,
+    var postDateTime: String,
 
     @SerializedName("is_scrap")
     var isScrap: Boolean,
 
+    var isBlack: Boolean = false,
+
     @SerializedName("scrap_count")
-    var scrapCount: Int
+    var scrapCount: Int,
+
+    var imageUrl: String
 )
