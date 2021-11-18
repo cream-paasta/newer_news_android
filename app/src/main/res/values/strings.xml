@@ -43,4 +43,10 @@
     <string name="my_page">My Page</string>
     <string name="my_page_hello">Hello, %s.</string>
 
+    <string name="my_page_like_news">Favorite article</string>
+    <string name="my_page_hate_news">Hate article</string>
+    <string name="my_page_version_info">Version info</string>
+
+    <string name="logout">Logout</string>
+
 </resources>

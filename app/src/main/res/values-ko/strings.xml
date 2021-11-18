@@ -42,5 +42,10 @@
 
     <string name="my_page">내 페이지</string>
     <string name="my_page_hello">%s님, 안녕하세요.</string>
+    <string name="my_page_like_news">좋아하는 기사</string>
+    <string name="my_page_hate_news">싫어하는 기사</string>
+    <string name="my_page_version_info">버전정보</string>
+
+    <string name="logout">로그아웃</string>
 
 </resources>
