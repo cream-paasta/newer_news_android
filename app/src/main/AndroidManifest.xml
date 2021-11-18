@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.newernews">
+    package="com.paasta.newernews">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -8,7 +8,7 @@
 
 
     <application
-        android:name="com.example.NewerNewsApplication"
+        android:name="com.paasta.NewerNewsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +20,7 @@
         <!--android:networkSecurityConfig="@xml/network_security_config"-->
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.paasta.newernews.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.newernews.presentation.ui.permission.PermissionActivity"
+        <activity android:name="com.paasta.newernews.presentation.ui.permission.PermissionActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,13 +40,13 @@
 
         </activity>
 
-        <activity android:name="com.example.newernews.presentation.ui.onboarding.OnboardingActivity"/>
+        <activity android:name="com.paasta.newernews.presentation.ui.onboarding.OnboardingActivity"/>
 
-        <activity android:name="com.example.newernews.presentation.ui.login.LoginActivity"/>
+        <activity android:name="com.paasta.newernews.presentation.ui.login.LoginActivity"/>
 
-        <activity android:name="com.example.newernews.presentation.ui.signup.SignUpActivity"/>
+        <activity android:name="com.paasta.newernews.presentation.ui.signup.SignUpActivity"/>
 
-        <activity android:name=".presentation.ui.WebViewActivity"/>
+        <activity android:name="com.paasta.newernews.presentation.ui.WebViewActivity"/>
 
         <meta-data
             android:name="com.google.android.geo.API-KEY"

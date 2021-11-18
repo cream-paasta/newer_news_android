@@ -6,19 +6,19 @@
     <data>
         <variable
             name="news"
-            type="com.example.newernews.domain.model.News" />
+            type="com.paasta.newernews.domain.model.News" />
 
         <variable
             name="onItemClickListener"
-            type="com.example.newernews.presentation.delegate.ItemClickListener" />
+            type="com.paasta.newernews.presentation.delegate.ItemClickListener" />
 
         <variable
             name="onLikeClickListener"
-            type="com.example.newernews.presentation.delegate.ItemClickListener" />
+            type="com.paasta.newernews.presentation.delegate.ItemClickListener" />
 
         <variable
             name="onHateClickListener"
-            type="com.example.newernews.presentation.delegate.ItemClickListener" />
+            type="com.paasta.newernews.presentation.delegate.ItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

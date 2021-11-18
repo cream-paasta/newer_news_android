@@ -31,15 +31,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tv_location"
             app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintVertical_bias="0.3"
-            android:text="@string/home_info_hello"/>
+            app:layout_constraintVertical_bias="0.3" />
 
         <TextView
             android:id="@+id/tv_location"
@@ -48,12 +47,11 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/tv_hello"
             app:layout_constraintBottom_toTopOf="@id/tv_weather"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/home_info_location"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/tv_weather"
@@ -62,7 +60,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="15dp"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@id/tv_location"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +83,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:textSize="25sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <ProgressBar
@@ -120,7 +118,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:textSize="25sp"
+        android:textSize="16sp"
         android:textStyle="bold"/>
 
     <ProgressBar
