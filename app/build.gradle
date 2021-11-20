@@ -13,8 +13,8 @@ android {
         applicationId "com.paasta.newernews"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 211121102
-        versionName "1.0.2"
+        versionCode 211121103
+        versionName "1.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
