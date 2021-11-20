@@ -36,6 +36,7 @@
         app:layout_constraintLeft_toRightOf="@id/et_chat"
         app:layout_constraintRight_toRightOf="parent"
         android:backgroundTint="@color/main_color"
+        android:textColor="@color/white"
         android:text="@string/send_chat"/>
     
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

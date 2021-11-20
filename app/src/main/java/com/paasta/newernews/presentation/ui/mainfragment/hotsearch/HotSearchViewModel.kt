@@ -9,6 +9,7 @@ import com.paasta.newernews.domain.model.NewsList
 import com.paasta.newernews.domain.model.request.RequestNewsListModel
 import com.paasta.newernews.domain.usecase.GetHotLocationsUseCase
 import com.paasta.newernews.domain.usecase.GetNewsListUseCase
+import com.paasta.newernews.domain.usecase.local.GetSavedCityUseCase
 import com.paasta.newernews.domain.usecase.local.GetSavedGuUseCase
 import com.paasta.newernews.domain.usecase.local.GetTokenUseCase
 import com.paasta.newernews.presentation.delegate.NewsOpenDelegate

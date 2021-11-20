@@ -40,6 +40,11 @@ class HotNewsDiffCallBack(): DiffUtil.ItemCallback<News>() {
     }
 }
 
+@BindingAdapter("bind_hot_location")
+fun bindHotLocation(v: TextView, gu: String) {
+    v.text = "서울특별시 $gu"
+}
+
 @BindingAdapter("bind_hot_news_title")
 fun bindHotNewsTitle(v: TextView, title: String) {
     v.text = Html.fromHtml(title, Html.FROM_HTML_MODE_COMPACT)
