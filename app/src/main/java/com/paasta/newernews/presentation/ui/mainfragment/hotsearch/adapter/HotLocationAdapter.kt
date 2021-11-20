@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.paasta.newernews.databinding.ItemHotLocationBinding
 import com.paasta.newernews.domain.model.Gus
+import com.paasta.newernews.presentation.delegate.GuItemClickListener
+import com.paasta.newernews.presentation.delegate.ItemClickListener
 
 class HotLocationAdapter(
-
+    val itemClickListener: GuItemClickListener
 ): ListAdapter<Gus, HotLocationAdapter.ViewHolder>(HotLocationDiffCallBack()) {
 
     inner class ViewHolder(
@@ -16,6 +18,7 @@ class HotLocationAdapter(
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Gus, position: Int) {
             binding.gu = item
+            binding.onItemClickListener = itemClickListener
             binding.tvHotLocationGrade.text = (position+1).toString()
         }
     }

@@ -12,6 +12,7 @@ import com.paasta.newernews.domain.usecase.GetNewsListUseCase
 import com.paasta.newernews.domain.usecase.local.GetSavedCityUseCase
 import com.paasta.newernews.domain.usecase.local.GetSavedGuUseCase
 import com.paasta.newernews.domain.usecase.local.GetTokenUseCase
+import com.paasta.newernews.presentation.delegate.HotLocationDelegate
 import com.paasta.newernews.presentation.delegate.NewsOpenDelegate
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.SingleObserver
@@ -21,10 +22,11 @@ import javax.inject.Inject
 @HiltViewModel
 class HotSearchViewModel @Inject constructor(
     private val getTokenUseCase: GetTokenUseCase,
-    private val getSavedGuUseCase: GetSavedGuUseCase,
+    private val getSavedCityUseCase: GetSavedCityUseCase,
     private val getHotLocationsUseCase: GetHotLocationsUseCase,
     private val getNewsListUseCase: GetNewsListUseCase,
-    val newsOpenDelegate: NewsOpenDelegate
+    val newsOpenDelegate: NewsOpenDelegate,
+    val hotLocationDelegate: HotLocationDelegate
 ) : ViewModel() {
     private val _newsListLiveData = MutableLiveData<NewsList>()
     val newsListLiveData: LiveData<NewsList> get() = _newsListLiveData
@@ -49,7 +51,7 @@ class HotSearchViewModel @Inject constructor(
     }
 
     fun requestHotNewsList() {
-        val requestNewsListModel = RequestNewsListModel(getTokenUseCase.getToken()!!, getSavedGuUseCase.getSavedGu()!!, true)
+        val requestNewsListModel = RequestNewsListModel(getTokenUseCase.getToken()!!, getSavedCityUseCase.getSavedCity()!!, true)
         getNewsListUseCase.execute(requestNewsListModel)
             .subscribe(object: SingleObserver<NewsList> {
                 override fun onSubscribe(d: Disposable?) {

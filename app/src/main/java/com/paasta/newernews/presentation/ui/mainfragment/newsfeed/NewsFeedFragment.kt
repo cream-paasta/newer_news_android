@@ -33,9 +33,9 @@ class NewsFeedFragment : Fragment() {
         newsFeedViewModel.savedAddressLiveData.observe(viewLifecycleOwner, {
             TabLayoutMediator(binding.newsFeedTabLayout, binding.newsFeedViewPager) { tab, position ->
                 when(position) {
-                    0 -> tab.text = String.format(getString(R.string.news_dynamic), it.dong)
-                    1 -> tab.text = String.format(getString(R.string.news_dynamic), it.gu)
-                    2 -> tab.text = String.format(getString(R.string.news_dynamic), it.city)
+                    0 -> tab.text = String.format(getString(R.string.news_title_format), it.dong)
+                    1 -> tab.text = String.format(getString(R.string.news_title_format), it.gu)
+                    2 -> tab.text = String.format(getString(R.string.news_title_format), it.city)
                 }
             }.attach()
         })

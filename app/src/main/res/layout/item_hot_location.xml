@@ -7,6 +7,10 @@
         <variable
             name="gu"
             type="com.paasta.newernews.domain.model.Gus" />
+
+        <variable
+            name="onItemClickListener"
+            type="com.paasta.newernews.presentation.delegate.GuItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +25,10 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_margin="5dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            android:clipToPadding="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="@{(view) -> onItemClickListener.onItemClick(view, gu)}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

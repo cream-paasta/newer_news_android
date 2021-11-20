@@ -35,7 +35,7 @@
     <string name="weather_temp_format">%d°C</string>
     <string name="weather_feels_like_temp">Sensory temperature: %d°C</string>
 
-    <string name="news_dynamic">%s news</string>
+    <string name="news_title_format">%s news</string>
 
     <string name="time_now">Now</string>
     <string name="time_min_ago">minutes ago</string>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.paasta.newernews.databinding.FragmentHotSearchBinding
 import com.paasta.newernews.presentation.ui.WebViewActivity
+import com.paasta.newernews.presentation.ui.hotlocationnews.HotLocationNewsActivity
 import com.paasta.newernews.presentation.ui.mainfragment.hotsearch.adapter.HotLocationAdapter
 import com.paasta.newernews.presentation.ui.mainfragment.hotsearch.adapter.HotNewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +24,7 @@ class HotSearchFragment : Fragment() {
     private var _binding: FragmentHotSearchBinding? = null
     private val binding get() = _binding!!
 
-    private val hotLocationAdapter by lazy { HotLocationAdapter() }
+    private val hotLocationAdapter by lazy { HotLocationAdapter(hotSearchViewModel.hotLocationDelegate) }
     private val hotNewsAdapter by lazy { HotNewsAdapter(hotSearchViewModel.newsOpenDelegate) }
 
     override fun onCreateView(
@@ -58,6 +59,12 @@ class HotSearchFragment : Fragment() {
         hotSearchViewModel.newsOpenDelegate.urlLiveDelegate.observe(viewLifecycleOwner, {
             val intent = Intent(activity, WebViewActivity::class.java)
             intent.putExtra("url", it)
+            startActivity(intent)
+        })
+
+        hotSearchViewModel.hotLocationDelegate.guLiveDelegate.observe(viewLifecycleOwner, {
+            val intent = Intent(activity, HotLocationNewsActivity::class.java)
+            intent.putExtra("gu", it)
             startActivity(intent)
         })
 

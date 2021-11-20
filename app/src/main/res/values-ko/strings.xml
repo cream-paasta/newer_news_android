@@ -35,7 +35,7 @@
     <string name="weather_temp_format">%d°C</string>
     <string name="weather_feels_like_temp">체감온도: %d°C</string>
 
-    <string name="news_dynamic">%s 뉴스</string>
+    <string name="news_title_format">%s 뉴스</string>
     
     <string name="time_now">방금 전</string>
     <string name="time_min_ago">분 전</string>

@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
             binding.tvLocationDong.text = it.dong
             binding.tvLocationEnd.text = getString(R.string.home_info_location_end)
             binding.tvWeatherTitle.text = String.format(getString(R.string.home_info_weather), it.gu)
-            binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.news_dynamic), it.city)
+            binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.news_title_format), it.city)
 
             homeViewModel.requestCurrentWeather(it.lat, it.lon)
             //homeViewModel.requestNewsList(it.gu, 0)

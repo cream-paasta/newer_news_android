@@ -52,6 +52,8 @@
 
         <activity android:name=".presentation.ui.versioninfo.VersionInfoActivity"/>
 
+        <activity android:name=".presentation.ui.hotlocationnews.HotLocationNewsActivity"/>
+
         <meta-data
             android:name="com.google.android.geo.API-KEY"
             android:value="AIzaSyCbuVwtIapfGxO5HuZqjW6sHhaTeB9dj8g"/>
