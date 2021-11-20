@@ -45,7 +45,7 @@ class HotSearchViewModel @Inject constructor(
                 }
 
                 override fun onError(e: Throwable?) {
-                    Log.d("TESTLOG", "[requestHotLocations] onError: $e")
+                    Log.e("TESTLOG", "[requestHotLocations] onError: $e")
                 }
             })
     }
