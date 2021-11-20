@@ -41,6 +41,16 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_hello"/>
 
         <TextView
+            android:id="@+id/tv_hello_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/tv_home_user_name"
+            app:layout_constraintTop_toTopOf="@id/tv_hello"
+            app:layout_constraintBottom_toBottomOf="@id/tv_hello"/>
+
+        <TextView
             android:id="@+id/tv_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

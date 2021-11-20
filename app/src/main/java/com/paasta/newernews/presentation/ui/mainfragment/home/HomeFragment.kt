@@ -36,7 +36,8 @@ class HomeFragment : Fragment() {
         homeViewModel.requestUserName()
         homeViewModel.userNameLiveData.observe(viewLifecycleOwner, {
             binding.tvHello.text = getString(R.string.home_info_hello) + " "
-            binding.tvHomeUserName.text = it + "님,"
+            binding.tvHomeUserName.text = it
+            binding.tvHelloEnd.text = getString(R.string.home_info_hello_end)
         })
 
         homeViewModel.requestCurrentAddress()

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.paasta.newernews.R
 import com.paasta.newernews.databinding.FragmentChatBinding
 import com.paasta.newernews.presentation.ui.mainfragment.chat.adapter.ChatAdapter
@@ -56,7 +57,12 @@ class ChatFragment: Fragment() {
             chatAdapter.submitList(list)
             binding.swipeRefreshLayoutChat.isRefreshing = false
             binding.progressBarChat.visibility = View.GONE
-            binding.rvChat.smoothScrollToPosition(0)
+        })
+
+        chatAdapter.registerAdapterDataObserver(object: RecyclerView.AdapterDataObserver() {
+            override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
+                (binding.rvChat.layoutManager as LinearLayoutManager).scrollToPositionWithOffset(positionStart, 0)
+            }
         })
 
         return binding.root
