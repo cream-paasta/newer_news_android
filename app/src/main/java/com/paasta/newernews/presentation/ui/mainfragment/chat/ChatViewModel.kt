@@ -46,7 +46,7 @@ class ChatViewModel @Inject constructor(
                 }
 
                 override fun onError(e: Throwable?) {
-                    Log.d("TESTLOG", "[requestChatList] onError: $e")
+                    Log.e("TESTLOG", "[requestChatList] onError: $e")
                 }
             })
     }

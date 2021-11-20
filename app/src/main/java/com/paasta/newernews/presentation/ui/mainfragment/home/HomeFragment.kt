@@ -72,7 +72,8 @@ class HomeFragment : Fragment() {
 
                 binding.tvWeatherCurrentTemp.text = String.format(getString(R.string.weather_temp_format), it.main.temp.roundToInt())
 
-                binding.tvWeatherDescription.text = it.weather[0].description
+                //binding.tvWeatherDescription.text = it.weather[0].description
+                binding.tvWeatherDescription.text = "안개"
                 binding.tvWeatherMinTemp.text = String.format(getString(R.string.weather_temp_format), it.main.minTemp.roundToInt())
                 binding.tvDivider.text = " / "
                 binding.tvWeatherMaxTemp.text = String.format(getString(R.string.weather_temp_format), it.main.maxTemp.roundToInt())

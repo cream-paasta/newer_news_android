@@ -53,7 +53,6 @@ class HomeViewModel @Inject constructor(
                 }
 
                 override fun onSuccess(t: KoreanAddress) {
-                    Log.d("TESTLOG", "city: ${t.city} / gu: ${t.gu} / dong: ${t.dong}")
                     saveAddress(t)
                     _currentAddressLiveData.value = t
                 }

@@ -13,8 +13,8 @@ android {
         applicationId "com.paasta.newernews"
         minSdkVersion 26
         targetSdkVersion 30
-        versionCode 211119101
-        versionName "1.0.0"
+        versionCode 211121101
+        versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -68,7 +68,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.google.code.gson:gson:2.8.7'
-
 
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'

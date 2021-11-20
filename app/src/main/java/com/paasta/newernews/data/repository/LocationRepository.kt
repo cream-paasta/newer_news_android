@@ -29,7 +29,6 @@ class LocationRepository @Inject constructor(
             } else {
                 locationModule.locationClient().lastLocation.addOnSuccessListener {
                     val addressList = locationModule.geocoder().getFromLocation(it.latitude, it.longitude, 2)
-                    Log.d("TESTLOG", "[getLocationAddress] ${it.latitude}, ${it.longitude}")
                     val addressLineList = if (addressList[0].thoroughfare != null) {
                         addressList[0].getAddressLine(0).split(" ")
                     } else {

@@ -43,7 +43,6 @@ class SignUpActivity: AppCompatActivity() {
         }
 
         signUpViewModel.isSubmitSuccessLiveData.observe(this, {
-            Log.d("TESTLOG", "in observe $it")
             binding.signupProgressBar.visibility = View.GONE
             window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             if (it.equals(0)) {
