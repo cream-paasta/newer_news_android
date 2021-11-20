@@ -30,6 +30,10 @@ class ChatViewModel @Inject constructor(
     private val _chatListLiveData = MutableLiveData<ChatList>()
     val chatListLiveData: LiveData<ChatList> get() = _chatListLiveData
 
+    fun getSavedGu(): String {
+        return getSavedGuUseCase.getSavedGu() ?: ""
+    }
+
     fun requestChatList() {
         val requestChatModel = RequestGetChatModel(getTokenUseCase.getToken()!!, getSavedGuUseCase.getSavedGu()!!)
         getChatListUseCase.execute(requestChatModel)

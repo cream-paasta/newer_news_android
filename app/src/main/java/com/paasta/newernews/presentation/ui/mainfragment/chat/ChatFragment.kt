@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.paasta.newernews.R
 import com.paasta.newernews.databinding.FragmentChatBinding
 import com.paasta.newernews.presentation.ui.mainfragment.chat.adapter.ChatAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class ChatFragment: Fragment() {
@@ -29,6 +29,8 @@ class ChatFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentChatBinding.inflate(inflater, container, false)
+
+        binding.tvChatTitle.text = String.format(getString(R.string.chat_title), chatViewModel.getSavedGu())
 
         binding.rvChat.also {
             it.layoutManager = LinearLayoutManager(this.context)

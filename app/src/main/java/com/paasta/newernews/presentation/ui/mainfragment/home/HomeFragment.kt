@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
         homeViewModel.requestCurrentAddress()
         homeViewModel.currentAddressLiveData.observe(viewLifecycleOwner, {
             binding.tvLocation.text = String.format(getString(R.string.home_info_location), it.city, it.gu, it.dong)
-            binding.tvSmallLocationNewsTitle.text = String.format(getString(R.string.news_dynamic), it.gu)
+            binding.tvSmallLocationNewsTitle.text = String.format(getString(R.string.home_info_weather), it.gu)
             binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.news_dynamic), it.city)
 
             homeViewModel.requestNewsList(it.gu, 0)

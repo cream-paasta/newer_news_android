@@ -13,8 +13,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="지금 동작구에서 무슨 일이 일어나고 있나요?"/>
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/et_chat"

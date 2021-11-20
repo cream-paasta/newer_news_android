@@ -5,3 +5,8 @@ data class RequestNewsListModel(
     val query: String,
     val hot: Boolean = false
 )
+
+data class RequestUserNewsListModel(
+    val auth: String,
+    val kind: String
+)

@@ -28,6 +28,13 @@ interface NNApi {
     ): Single<NewsList>
 
     @Headers("Accept: application/json", "Content-Type: application/json")
+    @GET(BaseUrl.NN_API_GET_NEWS + "/" + BaseUrl.NN_API_GET_USER_NEWS)
+    fun getUserNewsList(
+        @Header("Authorization") auth: String,
+        @Query("kind") kind: String
+    ): Single<NewsList>
+
+    @Headers("Accept: application/json", "Content-Type: application/json")
     @GET(BaseUrl.NN_API_GET_NEWS + "/{id}")
         fun getIncrementViewCount(
         @Header("Authorization") auth: String,

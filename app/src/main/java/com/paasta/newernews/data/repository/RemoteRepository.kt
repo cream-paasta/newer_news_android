@@ -1,6 +1,7 @@
 package com.paasta.newernews.data.repository
 
 import com.paasta.newernews.data.network.nnapi.NNApi
+import com.paasta.newernews.data.network.nnapi.WeatherAPI
 import com.paasta.newernews.domain.model.*
 import com.paasta.newernews.domain.model.request.*
 import io.reactivex.rxjava3.core.Single
@@ -9,7 +10,8 @@ import retrofit2.Response
 import javax.inject.Inject
 
 class RemoteRepository @Inject constructor(
-    private val NNApiClient: NNApi
+    private val NNApiClient: NNApi,
+    private val weatherAPI: WeatherAPI
 ){
     fun postSignUp(param: Signup): Single<Any> =
         NNApiClient.postSignUp(param)
@@ -19,6 +21,9 @@ class RemoteRepository @Inject constructor(
 
     fun getNewsList(param: RequestNewsListModel): Single<NewsList> =
         NNApiClient.getNewsList(param.auth, param.query, param.hot)
+
+    fun getUserNewsList(param: RequestUserNewsListModel): Single<NewsList> =
+        NNApiClient.getUserNewsList(param.auth, param.kind)
 
     fun getIncrementViewCount(param: IncrementViewCountModel): Single<Any> =
         NNApiClient.getIncrementViewCount(param.auth, param.id)
@@ -34,6 +39,9 @@ class RemoteRepository @Inject constructor(
 
     fun postChat(param: PostChat): Single<Any> =
         NNApiClient.postChat(param.auth, param.postChatModel)
+
+    fun getCurrentWeather(param: RequestGetCurrentWeather): Single<WeatherModel> =
+        weatherAPI.getCurrentWeather(param.lat, param.lon, param.appId, param.units)
 
     fun getImageUrl(url: String): Single<String> {
         return Single.create{ emitter ->

@@ -29,7 +29,8 @@ data class News(
     @SerializedName("is_scrap")
     var isScrap: Boolean,
 
-    var isBlack: Boolean = false,
+    @SerializedName("is_black_list")
+    var isBlack: Boolean,
 
     @SerializedName("scrap_count")
     var scrapCount: Int,

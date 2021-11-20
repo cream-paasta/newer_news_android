@@ -3,6 +3,7 @@ package com.paasta.newernews.data.network
 import android.content.Context
 import com.paasta.newernews.data.network.nnapi.BaseUrl
 import com.paasta.newernews.data.network.nnapi.NNApi
+import com.paasta.newernews.data.network.nnapi.WeatherAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,12 +40,26 @@ object NetworkModule {
     fun getRetrofit(): NNApi {
         return Retrofit.Builder()
             .baseUrl(BaseUrl.NN_API_BASE_URL)
-            .client(selfSigningHelperClient)
-            //.client(sslSocketFactoryHelperClient)
+            //.client(selfSigningHelperClient)
+            .client(sslSocketFactoryHelperClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(NNApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun getWeatherRetrofit(): WeatherAPI {
+        return Retrofit.Builder()
+            .baseUrl(BaseUrl.WEATHER_API_BASE_URL)
+            //.client(selfSigningHelperClient)
+            //.client(sslSocketFactoryHelperClient)
+            .client(httpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .build()
+            .create(WeatherAPI::class.java)
     }
 
 }

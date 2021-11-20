@@ -27,7 +27,7 @@
     
     <string name="home_info_hello">안녕하세요. %s님,</string>
     <string name="home_info_location">현재 위치는\n%s %s %s입니다.</string>
-    <string name="home_info_weather">%s의 현재 기온은 %d℃입니다.</string>
+    <string name="home_info_weather">%s 날씨</string>
 
     <string name="news_dynamic">%s 뉴스</string>
     
@@ -40,11 +40,16 @@
     <string name="hot_location">실시간 급상승 지역</string>
     <string name="hot_news">실시간 뉴스</string>
 
+    <string name="chat_title">지금 %s에서 무슨 일이 일어나고 있나요?</string>
+
     <string name="my_page">내 페이지</string>
     <string name="my_page_hello">%s님, 안녕하세요.</string>
     <string name="my_page_like_news">좋아하는 기사</string>
     <string name="my_page_hate_news">싫어하는 기사</string>
     <string name="my_page_version_info">버전정보</string>
+
+    <string name="empty_like_news">좋아하는 기사가 없습니다.\n뉴스 피드에서 좋아요를 눌러보세요!</string>
+    <string name="empty_hate_news">싫어하는 기사가 없습니다.</string>
 
     <string name="logout">로그아웃</string>
 

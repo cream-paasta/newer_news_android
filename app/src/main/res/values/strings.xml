@@ -27,7 +27,7 @@
 
     <string name="home_info_hello">Hello. %s,</string>
     <string name="home_info_location">The current location is\n%s %s %s.</string>
-    <string name="home_info_weather">The current temperature in %s is %d℃.</string>
+    <string name="home_info_weather">%s Weather</string>
 
     <string name="news_dynamic">%s news</string>
 
@@ -40,12 +40,17 @@
     <string name="hot_location">Hot Location</string>
     <string name="hot_news">Hot News</string>
 
+    <string name="chat_title">What\'s happening in %s right now?</string>
+
     <string name="my_page">My Page</string>
     <string name="my_page_hello">Hello, %s.</string>
 
     <string name="my_page_like_news">Favorite article</string>
     <string name="my_page_hate_news">Hate article</string>
     <string name="my_page_version_info">Version info</string>
+
+    <string name="empty_like_news">There is no article you like.\nPress like in the news feed!</string>
+    <string name="empty_hate_news">There is no article you hate.</string>
 
     <string name="logout">Logout</string>
 

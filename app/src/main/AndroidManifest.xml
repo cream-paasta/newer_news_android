@@ -48,6 +48,10 @@
 
         <activity android:name="com.paasta.newernews.presentation.ui.WebViewActivity"/>
 
+        <activity android:name=".presentation.ui.usernews.UserNewsActivity"/>
+
+        <activity android:name=".presentation.ui.versioninfo.VersionInfoActivity"/>
+
         <meta-data
             android:name="com.google.android.geo.API-KEY"
             android:value="AIzaSyCbuVwtIapfGxO5HuZqjW6sHhaTeB9dj8g"/>
