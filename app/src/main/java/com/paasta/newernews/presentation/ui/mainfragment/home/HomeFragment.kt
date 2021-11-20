@@ -13,6 +13,7 @@ import com.paasta.newernews.databinding.FragmentHomeBinding
 import com.paasta.newernews.presentation.ui.WebViewActivity
 import com.paasta.newernews.presentation.ui.mainfragment.home.adapter.HomeNewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -29,38 +30,61 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         homeViewModel.requestUserName()
         homeViewModel.userNameLiveData.observe(viewLifecycleOwner, {
-            binding.tvHello.text = String.format(getString(R.string.home_info_hello), it)
+            binding.tvHello.text = getString(R.string.home_info_hello) + " "
+            binding.tvHomeUserName.text = it + "님,"
         })
 
         homeViewModel.requestCurrentAddress()
         homeViewModel.currentAddressLiveData.observe(viewLifecycleOwner, {
-            binding.tvLocation.text = String.format(getString(R.string.home_info_location), it.city, it.gu, it.dong)
-            binding.tvSmallLocationNewsTitle.text = String.format(getString(R.string.home_info_weather), it.gu)
+            binding.tvLocation.text = getString(R.string.home_info_location) + " "
+            binding.tvLocationCity.text = it.city + " "
+            binding.tvLocationGu.text = it.gu + " "
+            binding.tvLocationDong.text = it.dong
+            binding.tvLocationEnd.text = getString(R.string.home_info_location_end)
+            binding.tvWeatherTitle.text = String.format(getString(R.string.home_info_weather), it.gu)
             binding.tvBigLocationNewsTitle.text = String.format(getString(R.string.news_dynamic), it.city)
 
-            homeViewModel.requestNewsList(it.gu, 0)
+            homeViewModel.requestCurrentWeather(it.lat, it.lon)
+            //homeViewModel.requestNewsList(it.gu, 0)
             homeViewModel.requestNewsList(it.city, 1)
         })
 
-        binding.rvSmallLocationNews.also {
+        /*binding.rvSmallLocationNews.also {
             it.layoutManager = LinearLayoutManager(this.context)
             it.adapter = smallLocationAdapter
-        }
+        }*/
 
         binding.rvBigLocationNews.also {
             it.layoutManager = LinearLayoutManager(this.context)
             it.adapter = bigLocationAdapter
         }
 
+        homeViewModel.weatherLiveData.observe(viewLifecycleOwner, {
+            it.let {
+                val iconId = it.weather[0].icon.substring(0, 2)
+                binding.ivWeatherIcon.setImageResource(resources.getIdentifier("@drawable/weather_icon_$iconId", "drawable", activity?.packageName))
+
+                binding.tvWeatherCurrentTemp.text = String.format(getString(R.string.weather_temp_format), it.main.temp.roundToInt())
+
+                binding.tvWeatherDescription.text = it.weather[0].description
+                binding.tvWeatherMinTemp.text = String.format(getString(R.string.weather_temp_format), it.main.minTemp.roundToInt())
+                binding.tvDivider.text = " / "
+                binding.tvWeatherMaxTemp.text = String.format(getString(R.string.weather_temp_format), it.main.maxTemp.roundToInt())
+                binding.tvWeatherFeelsLikeTemp.text = String.format(getString(R.string.weather_feels_like_temp), it.main.feelsLikeTemp.roundToInt())
+
+                binding.progressBarWeather.visibility = View.GONE
+            }
+        })
+
         homeViewModel.smallNewsListLivedata.observe(viewLifecycleOwner, {
             it.let {
                 smallLocationAdapter.submitList(it.news.toMutableList())
-                binding.progressBarSmallNews.visibility = View.GONE
+                binding.progressBarWeather.visibility = View.GONE
             }
         })
 

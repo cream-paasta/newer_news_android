@@ -6,8 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.paasta.newernews.domain.model.KoreanAddress
 import com.paasta.newernews.domain.model.NewsList
+import com.paasta.newernews.domain.model.WeatherModel
+import com.paasta.newernews.domain.model.request.RequestGetCurrentWeather
 import com.paasta.newernews.domain.model.request.RequestNewsListModel
-import com.paasta.newernews.domain.usecase.*
+import com.paasta.newernews.domain.usecase.GetAddressUseCase
+import com.paasta.newernews.domain.usecase.GetCurrentWeatherUseCase
+import com.paasta.newernews.domain.usecase.GetNewsListUseCase
 import com.paasta.newernews.domain.usecase.local.*
 import com.paasta.newernews.presentation.delegate.NewsOpenDelegate
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,10 +24,11 @@ class HomeViewModel @Inject constructor(
     private val getAddressUseCase: GetAddressUseCase,
     private val getUserNameUseCase: GetUserNameUseCase,
     private val getTokenUseCase: GetTokenUseCase,
-    private val getNewsListUseCase: GetNewsListUseCase,
     private val setSavedCityUseCase: SetSavedCityUseCase,
     private val setSavedGuUseCase: SetSavedGuUseCase,
     private val setSavedDongUseCase: SetSavedDongUseCase,
+    private val getNewsListUseCase: GetNewsListUseCase,
+    private val getCurrentWeatherUseCase: GetCurrentWeatherUseCase,
     val delegate: NewsOpenDelegate
 ) : ViewModel() {
     private val _currentAddressLiveData = MutableLiveData<KoreanAddress>()
@@ -31,6 +36,9 @@ class HomeViewModel @Inject constructor(
 
     private val _userNameLiveData = MutableLiveData<String>()
     val userNameLiveData: LiveData<String> get() = _userNameLiveData
+
+    private val _weatherLiveData = MutableLiveData<WeatherModel>()
+    val weatherLiveData: LiveData<WeatherModel> get() = _weatherLiveData
 
     private val _smallNewsListLiveData = MutableLiveData<NewsList>()
     val smallNewsListLivedata: LiveData<NewsList> get() = _smallNewsListLiveData
@@ -63,6 +71,25 @@ class HomeViewModel @Inject constructor(
             _userNameLiveData.value = userName!!
         } else {
             _userNameLiveData.value = ""
+        }
+    }
+
+    fun requestCurrentWeather(lat: Double, lon: Double) {
+        val token = getTokenUseCase.getToken()
+        if (token != null) {
+            getCurrentWeatherUseCase.execute(RequestGetCurrentWeather(lat, lon))
+                .subscribe(object: SingleObserver<WeatherModel> {
+                    override fun onSubscribe(d: Disposable?) {
+                    }
+
+                    override fun onSuccess(t: WeatherModel?) {
+                        _weatherLiveData.value = t!!
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        Log.e("TESTLOG", "[requestCurrentWeather] onError: $e")
+                    }
+                })
         }
     }
 

@@ -39,10 +39,10 @@
             app:layout_constraintHorizontal_bias="0"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:maxLines="2"
+            android:maxLines="1"
             android:ellipsize="end"
             android:textColor="@color/default_text_color"
-            bind_title="@{news.title}" />
+            bind_home_news_title="@{news.title}" />
 
         <TextView
             android:id="@+id/tv_news_company"
@@ -62,8 +62,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginEnd="8dp"
-            android:text="1시간 전"
-            android:visibility="gone"/>
+            bind_home_news_time="@{news.postDateTime}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -21,13 +21,19 @@
     <string name="sign_up">Sign up</string>
     <string name="email">E-Mail</string>
     <string name="password">Password</string>
+    <string name="password_re">Re enter Password</string>
     <string name="nickname">Nick name</string>
     <string name="sign_up_success">Success!</string>
-    <string name="sign_up_fali">Fail</string>
+    <string name="sign_up_password_unmatched">The passwords are different. Please check again.</string>
+    <string name="sign_up_fail">Fail</string>
 
-    <string name="home_info_hello">Hello. %s,</string>
-    <string name="home_info_location">The current location is\n%s %s %s.</string>
+    <string name="home_info_hello">Hello. </string>
+    <string name="home_info_location">The current location is </string>
+    <string name="home_info_location_end">.</string>
     <string name="home_info_weather">%s Weather</string>
+
+    <string name="weather_temp_format">%d°C</string>
+    <string name="weather_feels_like_temp">Sensory temperature: %d°C</string>
 
     <string name="news_dynamic">%s news</string>
 

@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //supportActionBar?.elevation = 0F
+        supportActionBar?.elevation = 0F
 
         val navView: BottomNavigationView = binding.navView
 

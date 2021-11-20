@@ -15,6 +15,9 @@ data class WeatherModel(
     @SerializedName("clouds")
     var clouds: Clouds,
 
+    @SerializedName("rain")
+    var rain: Rain,
+
     @SerializedName("sys")
     var sys: Sys
 )
@@ -35,16 +38,16 @@ data class Weather(
 
 data class Main(
     @SerializedName("temp")
-    var temp: Long,
+    var temp: Double,
 
     @SerializedName("feels_like")
-    var feelsLikeTemp: Long,
+    var feelsLikeTemp: Double,
 
     @SerializedName("temp_min")
-    var minTemp: Long,
+    var minTemp: Double,
 
     @SerializedName("temp_max")
-    var maxTemp: Long,
+    var maxTemp: Double,
 
     @SerializedName("humidity")
     var humidity: Int
@@ -52,15 +55,23 @@ data class Main(
 
 data class Wind(
     @SerializedName("speed")
-    var speed: Long,
+    var speed: Double,
 
     @SerializedName("deg")
-    var deg: Long
+    var deg: Double
 )
 
 data class Clouds(
     @SerializedName("all")
     var cloudPercentage: Int
+)
+
+data class Rain(
+    @SerializedName("rain.1h")
+    var rain1h: Int,
+
+    @SerializedName("rain.3h")
+    var rain3h: Int
 )
 
 data class Sys(
@@ -70,10 +81,13 @@ data class Sys(
     @SerializedName("id")
     var id: Int,
 
-    @SerializedName("message")
-    var message: Long,
-
     @SerializedName("country")
     var country: String,
+
+    @SerializedName("sunrise")
+    var sunRise: Int,
+
+    @SerializedName("sunset")
+    var sunSet: Int
 )
 

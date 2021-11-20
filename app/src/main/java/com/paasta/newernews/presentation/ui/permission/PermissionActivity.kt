@@ -7,9 +7,13 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.paasta.newernews.R
+import com.paasta.newernews.databinding.ActivityPermissionBinding
 import com.paasta.newernews.presentation.ui.onboarding.OnboardingActivity
 
 class PermissionActivity: AppCompatActivity() {
+
+    private lateinit var binding: ActivityPermissionBinding
 
     private val PERMISIONS = arrayOf(
         android.Manifest.permission.ACCESS_FINE_LOCATION)
@@ -27,7 +31,10 @@ class PermissionActivity: AppCompatActivity() {
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_NewerNews)
         super.onCreate(savedInstanceState)
+
+        supportActionBar?.hide()
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             val requiredPermission = getRequiredPermission(PERMISIONS)

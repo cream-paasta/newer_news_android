@@ -35,7 +35,7 @@ class LocationRepository @Inject constructor(
                     } else {
                         addressList[1].getAddressLine(0).split(" ")
                     }
-                    emitter.onSuccess(KoreanAddress(addressLineList[1], addressLineList[2], addressLineList[3]))
+                    emitter.onSuccess(KoreanAddress(addressLineList[1], addressLineList[2], addressLineList[3], it.latitude, it.longitude))
                 }
             }
         }
