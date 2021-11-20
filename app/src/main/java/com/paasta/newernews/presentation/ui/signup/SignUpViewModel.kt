@@ -23,12 +23,9 @@ class SignUpViewModel @Inject constructor(
     private val _signUpFailTextLiveData = MutableLiveData<Int>()
     val signUpFailTextLiveData: LiveData<Int> get() = _signUpFailTextLiveData
 
-    fun submitSignUp(email: String, pw: String, rePw: String, nickname: String) {
-        if (pw != rePw) {
-            _isSubmitSuccessLiveData.value = R.string.sign_up_password_unmatched
-        }
+    fun submitSignUp(email: String, pw: String, nickname: String) {
         postSignupUseCase.execute(Signup(User(email, pw, nickname)))
-            .subscribe(object: SingleObserver<Any> {
+            .subscribe(object : SingleObserver<Any> {
                 override fun onSubscribe(d: Disposable?) {
                 }
 

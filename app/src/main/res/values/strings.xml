@@ -28,6 +28,7 @@
     <string name="sign_up_fail">Fail</string>
 
     <string name="home_info_hello">Hello. </string>
+    <string name="home_info_hello_end">,</string>
     <string name="home_info_location">The current location is </string>
     <string name="home_info_location_end">.</string>
     <string name="home_info_weather">%s Weather</string>

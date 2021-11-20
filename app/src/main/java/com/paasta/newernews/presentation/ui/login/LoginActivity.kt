@@ -28,8 +28,6 @@ class LoginActivity: AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnLogin.setOnClickListener { _ ->
-            // 테스트를 위해 강제 로그인 시킴
-            //loginViewModel.setLoginSuccess()
             loginViewModel.requestLogin(binding.loginId.text.toString(), binding.loginPw.text.toString())
             binding.loginProgressBar.visibility = View.VISIBLE
             window.setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
